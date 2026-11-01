@@ -2,20 +2,41 @@ package Task2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class MergeSort {
 
     public static void main(String[] args) {
-        ArrayList<Double> list = new ArrayList<>(
-                List.of(3.6, 4.2, 1.1, 10.9, 8.9, -1.5, 0.0)
-        );
+        List<Double> list = new ArrayList<>();
 
-        System.out.println("До mergeSort: " + list);
+        Scanner scanner = new Scanner(System.in);
+        int length = Integer.MIN_VALUE;
+        while (length < 0) {
+            System.out.print("Введите длину массива: ");
+            if (scanner.hasNextInt()) {
+                length = scanner.nextInt();
+                if (length < 0)
+                    System.out.println("Длина массива должна быть больше или равна нулю");
+            } else {
+                System.out.println("Введите корректное число");
+                scanner.next();
+            }
+        }
+
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            list.add(random.nextDouble());
+        }
+
+        List<Double> listBeforeSort = List.copyOf(list);
+
         mergeSort(list, 0, list.size() - 1);
+        System.out.println("До mergeSort: " + listBeforeSort);
         System.out.println("После mergeSort: " + list);
     }
 
-    public static void mergeSort(ArrayList<Double> list, int left, int right) {
+    public static void mergeSort(List<Double> list, int left, int right) {
         if (left < right) {
             int mid = left + (right - left) / 2;
             mergeSort(list, left, mid);
@@ -24,8 +45,8 @@ public class MergeSort {
         }
     }
 
-    private static void merge(ArrayList<Double> list, int left, int mid, int right) {
-        ArrayList<Double> temp = new ArrayList<>();
+    private static void merge(List<Double> list, int left, int mid, int right) {
+        List<Double> temp = new ArrayList<>(right - left + 1);
 
         int i = left;
         int j = mid + 1;

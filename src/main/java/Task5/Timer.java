@@ -32,7 +32,7 @@ public class Timer implements Task {
                     Thread.sleep(1000);
                 }
                 catch (InterruptedException e) {
-                    System.out.println("Thread has interrupted");
+                    System.out.println("Thread has been interrupted");
                     break;
                 }
                 seconds--;

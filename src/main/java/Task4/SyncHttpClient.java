@@ -29,8 +29,11 @@ public class SyncHttpClient {
             else {
                 System.out.println("Ошибка выполнения запроса. Код: " + response.statusCode());
             }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Ошибка сети при выполнении запроса: " + e.getMessage());
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.err.println("Выполнение запроса было прервано: " + e.getMessage());
         }
     }
 }

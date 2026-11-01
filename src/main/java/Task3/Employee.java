@@ -55,11 +55,11 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Task3.Employee{" +
-                "fullName='" + fullName + '\'' +
-                ", age=" + age +
-                ", department='" + department + '\'' +
-                ", salary=" + salary +
+        return "Рабочий{" +
+                "полное имя='" + fullName + '\'' +
+                ", возраст=" + age +
+                ", отдел='" + department + '\'' +
+                ", зарплата=" + salary +
                 '}';
     }
 }
